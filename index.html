@@ -10,34 +10,71 @@
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #181818;
-      color: #f9f9f9;
+      background-color: #121212;
+      color: #f1f1f1;
     }
 
     header {
       background-color: #000;
-      padding: 20px;
+      background-image: url('images/delicious-burger-studio.png');
+      background-size: cover; 
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 40px 20px;
       text-align: center;
       color: white;
+      position: relative;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
     }
 
     header h1 {
+      position: relative;
+      z-index: 1;
       font-family: 'Russo One', sans-serif;
       font-size: 36px;
       margin: 0;
+      letter-spacing: 1px;
     }
+    .review-link {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      font-size: 10px;
+      background-color: rgba(41, 40, 39, 0.5);
+      color: white;
+      padding: 3px 5px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 2;
+      transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+      backdrop-filter: blur(2px); 
+    }
+
+    .review-link:hover {
+      background-color: rgba(236, 236, 236, 0.85);
+    }
+
+
 
     .categories {
       display: flex;
       overflow-x: auto;
-      background-color: rgb(255, 153, 0);
+      background-color: #1e1e1e;
       padding: 10px;
       gap: 5px;
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-radius: 10px;
-     }
+      border-bottom: 2px solid #ff9900;
+    }
 
     .categories button {
       min-width: 90px;
@@ -50,13 +87,19 @@
       cursor: pointer;
       flex-shrink: 0;
     }
+    
 
     .categories button img {
       width: 80px;
       height: 60px;
       object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      border: 2px solid transparent;
+      transition: border 0.3s;
+    }
+
+    .categories button:hover img {
+      border-color: #ff9900;
     }
 
     .categories button span {
@@ -64,14 +107,14 @@
       margin-top: 3px;
       font-size: 12px;
       font-weight: 500;
-      color: #333;
+      color: #ffcc80;
       text-align: center;
     }
 
     .categories button.active span {
-      color: #e67e22;
+      color: #ff9900;
       font-weight: bold;
-      border-bottom: 2px solid #e67e22;
+      border-bottom: 2px solid #ff9900;
     }
 
     .menu-container {
@@ -95,10 +138,11 @@
 
     .category-title {
       font-size: 24px;
-      border-left: 5px solid #e67e22;
+      border-left: 5px solid #ff9900;
       padding-left: 10px;
       margin: 20px 0 15px;
       position: relative;
+      color: #ffcc80;
     }
 
     .category-title::after {
@@ -108,11 +152,11 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(to right, #e67e22, transparent);
+      background: linear-gradient(to right, #ff9900, transparent);
     }
 
     .menu-item {
-      background-color: #252525;
+      background-color: #1e1e1e;
       padding: 10px;
       border-radius: 10px;
       margin-bottom: 15px;
@@ -121,24 +165,25 @@
       cursor: pointer;
       transition: all 0.3s ease;
       transform-origin: center;
+      border: 1px solid #2c2c2c;
     }
 
     .menu-item:hover {
-      background-color: #2a2a2a;
+      background-color: #292929;
     }
 
     .menu-item.active {
       transform: scale(1.05);
-      background-color: #2d2d2d;
-      box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
-      border: 1px solid #e67e22;
+      background-color: #333;
+      box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+      border: 1px solid #ff9900;
       z-index: 10;
     }
 
     .menu-item h3 {
       margin: 0;
       font-size: 16px; 
-      color: #f39c12;
+      color: #ffcc80;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
@@ -148,7 +193,7 @@
 
     .menu-item h3 span {
       font-size: 14px;
-      color: #e67e22;
+      color: #ff9900;
       font-weight: bold;
       margin-left: 8px;
       flex-shrink: 0;
@@ -163,21 +208,31 @@
     }
 
     .sos-btn {
-      background-color: #444;
-      color: #fff;
-      padding: 4px 8px;
-      border: none;
-      border-radius: 4px;
+      background-color: transparent;
+      color: #ccc;
+      border: 2px solid #8f8c88;
+      padding: 1px 3px;
+      margin-top: 10px;
       cursor: pointer;
-      font-size: 11px;
-      margin-top: 8px;
-      display: inline-block;
-      width: auto;
+      border-radius: 8px;
+      font-weight: 200;
+      transition: border-color 0.2s ease, color 0.2s ease;
     }
+
+    .sos-btn:hover {
+      border-color: #ffcc00;
+      color: #ffcc00;
+    }
+
+    .sos-btn.active {
+      border-color: #ffcc00;
+      color: #ffcc00;
+     }
+
 
     .sos-content {
       display: none;
-      background-color: #333;
+      background-color: #2a2a2a;
       padding: 8px 10px;
       margin-top: 10px;
       border-radius: 5px;
@@ -185,12 +240,13 @@
       color: #eee;
       line-height: 1.6;
     }
+
     .subcategory-title {
       font-size: 18px;
-      color: #e67e22;
+      color: #ff9900;
       margin: 15px 0 10px;
       padding-left: 10px;
-      border-left: 3px solid #e67e22;
+      border-left: 3px solid #ff9900;
     }
 
     .subcategory-items {
@@ -199,36 +255,70 @@
       gap: 10px;
       margin-bottom: 20px;
     }
-
+    
     @media (min-width: 701px) {
       .menu-container {
         max-width: 700px;
         margin: auto;
       }
-    }
+      .categories {
+       justify-content: space-evenly;
+       padding: 15px 40px;
+       gap: 20px;
+      }
+
+      .categories button {
+       min-width: 100px;
+       max-width: 120px;
+      } 
+      .review-link {
+        font-size: 13px;
+        padding: 8px 8px;
+        border-radius: 5px;
+      }
+   }
+
+   @media (min-width: 500px) {
+    header {
+       padding: 40px 20px;
+       position: relative;
+       background-image: url('images/delicious-burger-studio.png');
+       background-repeat: no-repeat;
+       background-position: center ;
+       background-size: contain;
+       background-size: 500px auto;
+       min-height: 90px;
+      }
+      header h1 {
+       font-size: 48px;
+       z-index: 2;
+       position: relative;
+      }  
+   }
+
     @media (max-width: 310px) {
       .category-items,
       .subcategory-items {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
       }
-      
+
       .menu-container {
         padding: 10px;
       }
-      
+
       .menu-item {
         padding: 8px;
       }
-      
+
       .menu-item h3 {
         font-size: 14px;
       }
-      
+
       .menu-item h3 span {
         font-size: 12px;
       }
-      
+
       .menu-item p {
         font-size: 11px;
       }
@@ -245,6 +335,9 @@
 <body>
 <header>
   <h1>MILL BURGER MENU</h1>
+  <a href="https://www.google.com/search?client=opera-gx&sa=X&sca_esv=873f597c83ac3191&hl=tr-TR&biw=1879&bih=956&cs=1&tbm=lcl&sxsrf=AE3TifNtLrpPTLPFpH87LzEFhfctQUHWlQ:1751888699090&q=The+Burger+Mill+Yorumlar&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDcxNrMwMLIwszQwNzI3NDSwMN7AyPiKUSIkI1XBqbQoPbVIwTczJ0chMr-oNDcnsWgRK04pAGdM4y5RAAAA&rldimm=17436802869072711083&ved=2ahUKEwj5q-H81aqOAxXIRfEDHbHUOvUQ9fQKegQIMRAF#lkt=LocalPoiReviews"
+   target="_blank" class="review-link">⭐ Google Yorumları</a>
+
 </header>
 <div class="categories">
   <button onclick="scrollToCategory('BURGERLER')">
@@ -263,6 +356,10 @@
     <img src="images/sandaviç_başlık.jpg" alt="Sandaviç">
     <span>Sandaviçler</span>
   </button>
+  <button onclick="scrollToCategory('WRAPLER')">
+    <img src="images/wrap_başlık.jpg" alt="Wrap">
+    <span>Wrapler</span>
+  </button>
   <button onclick="scrollToCategory('MAKARNALAR')">
     <img src="images/makarna_başlık.jpg" alt="Makarnalar">
     <span>Makarnalar</span>
@@ -270,10 +367,6 @@
   <button onclick="scrollToCategory('APARATİFLER')">
     <img src="images/aparatifler_başlık.jpg" alt="Aparatif">
     <span>Aparatifler</span>
-  </button>
-  <button onclick="scrollToCategory('WRAPLER')">
-    <img src="images/wrap_başlık.jpg" alt="Wrap">
-    <span>Wrapler</span>
   </button>
   <button onclick="scrollToCategory('SALATALAR')">
     <img src="images/salatalar_başlık.jpg" alt="Salata">
@@ -295,19 +388,70 @@ const menuData = {
     "Ennler": [
       {
         "name": "BASIC BURGER",
-        "price": "₺270",
-        "description": "130 gr dana burger köftesi, iceberg, domates, turşu, özel sos ve baharatlı patates kızartması"
+        "price": "270",
+        "description": "130 gr dana burger köftesi, iceberg, domates, turşu, özel sos ve baharatlı patates kızartması",
+        doubleMeatPrice: 90
+      },
+      {
+        "name":"CHEESE BURGER",
+        "price":"295",
+        "description":" 130 gr dana burger köftesi, Cheddar peyniri, iceberg, domates, turşu, özel sos ve baharatlı patates kızartması",
+        doubleMeatPrice: 85
       },
      {"name": "KARAMELIZE BURGER",
-        "price": "₺315", 
-        "description": " 130 gr dana burger köftesi, karamelize soğan, iceberg, domates, turşu, özel sos ve baharatlı patates kızartması"
+        "price": "315", 
+        "description": " 130 gr dana burger köftesi, karamelize soğan, iceberg, domates, turşu, özel sos ve baharatlı patates kızartması",
+        doubleMeatPrice: 90
      }
     ],
-    "Klasik Burgerler": [
+    "Klasikler": [
       {
         "name": "TÜRK İŞİ BURGER",
-        "price": "₺380",
-        "description": " 130 gr dana burger köftesi, pastırma dilimleri, karamelize soğan, cheddar peyniri, iceberg, domates, turşu, özel sos ve baharatlı patates kızartması"
+        "price": "380",
+        "description": " 130 gr dana burger köftesi, pastırma dilimleri, karamelize soğan, cheddar peyniri, iceberg, domates, turşu, özel sos ve baharatlı patates kızartması",
+        doubleMeatPrice: 115
+      },
+      {
+        "name":"ÇOOK ACI BURGER",
+        "price":"315",
+        "description":"130 gr dana burger köftesi, karamelize soğan, cheddar peyniri, Meksika biberi, iceberg, domates, turşu, kırmızı sos ve baharatlı patates kızartması",
+        doubleMeatPrice: 90
+      },
+      {
+        "name":"MANTARLI BURGER",
+        "price":"315",
+        "description":" 130 gr dana burger köftesi, sotelenmiş mantar, karamelize soğan, cheddar peyniri, iceberg, domates, turşu, özel sos ve baharatlı patates kızartması",
+        doubleMeatPrice: 90
+      },
+      {
+        "name":"KÖZ PATLICANLI BURGER",
+        "price":"315",
+        "description":" 130 gr  dana burger köftesi, közlenmiş patlıcan, karamelize soğan, cheddar peyniri, iceberg, domates, turşu, özel sos ve baharatlı patates kızartması",
+        doubleMeatPrice: 90
+      },
+      {
+        "name":"MİLL BURGER",
+        "price":"405",
+        "description":" 130 gr dana burger köftesi, füme kaburga , pastırma , kibrit patates, karamelize soğan, cheddar peyniri, iceberg, domates, turşu, özel sos ve baharatlı patates ",
+        doubleMeatPrice: 115
+      },
+      {
+        "name":"BARBEKÜ BURGER",
+        "price":"315",
+        "description":" 130 gr dana burger köftesi, bbq sos, karamelize soğan, cheddar peyniri, iceberg, domates, turşu ve baharatlı patates kızartmasıı",
+        doubleMeatPrice: 90
+      },
+      {
+        "name":"FÜME KABURGA BURGER",
+        "price":"380",
+        "description":"130 gr dana burger köftesi, füme kaburga eti, karamelize soğan, cheddar peyniri, iceberg, domates, turşu, özel sos ve baharatlı patates kızartması",
+        doubleMeatPrice: 115
+      },
+      {
+        "name":" ONION BURGER",
+        "price":"315",
+        "description":"130 gr dana burger köftesi, 3 adet soğan halkası, cheddar peyniri, iceberg, domates, turşu, özelsos ve baharatlı patates kızartması",
+        doubleMeatPrice: 90
       },
       {
         "name": "VEGETARIAN BURGER",
@@ -323,55 +467,318 @@ const menuData = {
       },
       {
         "name": "BARBEKÜ TAVUK BURGER",
-        "price": "₺285",
+        "price": "₺295",
         "description": " Özel panelenmiş tavuk fileto, bbq sos, cheddar peyniri, iceberg, domates, turşu ve baharatlı patates kızartması"
       }
     ],
-    "CAJUN BURGERLER": [
+    "Cajun Burgerler": [
       {
         "name": "CAJUN KLASIK BURGER",
         "price": "₺270",
         "description": "Hamburger ekmeği, cajun tavuk, iceberg, domates turşu, özel sos, patates kızartması +sos."
       },
       {
+        "name":"CAJUN COMBO BURGER",
+        "price":"₺290",
+        "description":"Hamburger ekmeği, cajun tavuk, iceberg, domates turşu, chedar peyniri , özel sos, patates kızartması +sos"
+      },
+      {
+        "name":"CAJUN MİLL BURGER",
+        "price":"₺315",
+        "description":" Hamburger ekmeği, cajun tavuk, iceberg, domates turşu, chedar peyniri , kibrit patates, özel sos, patates kızartması +sos"
+      },
+      {
+        "name":"CAJUN BBQ BURGER",
+        "price":"₺290",
+        "description":"Hamburger ekmeği, cajun tavuk, iceberg, domates turşu, barbekü sos, patates kızartması +sos"
+      },
+      {
+        "name":"CAJUN MİX MENÜ",
+        "price":"₺540",
+        "description":"1 adet cajun burger, 1 adet 130 gr. et burger,  kücük boy patates, 2 adet soğan halkası, 2 adet çıtır tavuk, +sos"
+      },
+      {
+        "name":"CAJUN DOYURAN 2 KİŞİLİK MENÜ",
+        "price":"₺520",
+        "description":" 2 adet cajun burger yada cajun dürüm,  küçük boy patates, 2 adet soğan halkası, 2 adet çıtır tavuk, +sos"
+      },
+      {
+        "name":"CAJUN DOYURAN 3 KİŞİLİK MENÜ",
+        "price":"₺675",
+        "description":"3 adet  cajun burger yada cajun dürüm,  büyük boy patates, 3 adet soğan halkası, 3 adet çıtır tavuk, +sos"
+      },
+      {
         "name": "CAJUN DOYURAN 4 KİŞİLİK MENÜ",
         "price": "₺855",
-        "description": " 4 adet cajun burger yada cajun dürüm,  büyük boy patates, 4 adet soğan halkası, 4 adet çıtır tavuk, sos"
+        "description": " 4 adet cajun burger yada cajun dürüm,  büyük boy patates, 4 adet soğan halkası, 4 adet çıtır tavuk, +sos"
       }
     ]
   },
   "CAJUNLAR": {
-    "Cajunda Ennler": [
+    "Ennler": [
       {
-        "name": "CAJUN MIX MENÜ",
-        "price": "₺540",
-        "description": "1 adet cajun burger, 1 adet 130 gr. et burger, kücük boy patates, 2 adet sogan halkasi, 2 adet citir tavuk, sos"
+        "name": "250 GR CAJUN TAVUK SEPETİ",
+        "price": "₺260",
+        "description": "250 gram çıtır cajun tavuk, küçük boy patates, 5 soğan halkası, 1 adet tortilla ,  +sos "
       },
       {
-        "name": "CAJUN DOYURAN iKi KiSiLiK MENÜ",
-        "price": "₺520",
-        "description": "2 adet burger yada cajun dürüm, küçük boy patates, 2 adet sogan halkasi, 2 adet citir tavuk, sos"
+        "name": "500 GRAM CAJUN TAVUK SEPETİ",
+        "price": "₺495",
+        "description": " 500 gram çıtır cajun tavuk, büyük boy patates, 8 soğan halkası, 2 adet tortilla , +sos "
       },
       {
-        "name": "CAJUN DOYURAN 3 KiSiLiK MENÜ",
-        "price": "₺675",
-        "description": "3 adet burger yada cajun durüm, büyük boy patates, 3 adet sogan halkasi, 3 adet citir tavuk, sos"
+        "name": "1000 GRAM CAJUN TAVUK SEPETİ",
+        "price": "₺880",
+        "description": " 1000 gram cajun tavuk, büyük boy patates, 10 soğan halkası, 4 tortilla , +sos"
+      },
+      {
+        "name": "CAJUN BAHARATLI CHEDAR SOSLU ÇITIR TAVUK DÜRÜM",
+        "price": "₺225",
+        "description": "Özel tortilla ekmeği, çıtır tavuk, iceberg, turşu, chedar sos+patates kızartması"
+      },
+      {
+        "name": "CAJUN BAHARATLI BARBEKÜ SOSLU ÇITIR TAVUK DÜRÜM",
+        "price": "₺225",
+        "description": " Özel tortilla ekmeği, çıtır tavuk iceberg , turşu bbq sos+ patates kızartması"
+      },
+      {
+        "name": " CAJUN BAHARATLI MANTARLI ÇITIR TAVUK DÜRÜM",
+        "price": "₺225",
+        "description": " Özel tortilla ekmeği, çıtır tavuk, iceberg, turşu karamelize mantar,özel sos+patates kızartması"
+      },
+      {
+        "name": " CAJUN BAHARATLI ÇITIR PATATESLİ TAVUK DÜRÜM",
+        "price": "₺225",
+        "description": "Özel tortilla ekmeği, çıtır tavuk, iceberg, turşu,  çıtır patates, özel sos+patates kızartması"
+      },
+      {
+        "name": " CAJUN BAHARATLI ÇITIR TAVUK DÜRÜM",
+        "price": "₺225",
+        "description": "Özel tortilla ekmeği, çıtır tavuk, iceberg, turşu, özel sos+patates kızartması"
       }
     ]
   },
   "KUMPİRLER": {
-    "Kumpirde Ennler": [
+    "Ennler": [
       {"name": "SÜPER MİX KUMPİR",
         "price": "₺360",
         "description": "Tereyağ,kaşar peyniri,sosis,rus salatası,turşu,zeytin,mısır,kırmızı lahana,kısır"
+      },
+      {
+        "name": "KAVURMALI KUMPİR",
+        "price": "₺360",
+        "description": "Tereyağ, kaşar peyniri, sosis, rus salatası, turşu, zeytin, mısır, kavurma"
+      },
+      {
+        "name": "VEJETERYAN KUMPİR",
+        "price": "₺315",
+        "description": "Tereyağ, kaşar peyniri, rus salatası, turşu, mantar, mısır, köz patlıcan"
+      },
+      {
+        "name": "CHİLİ KUMPİR",
+        "price": "₺315",
+        "description": "Tereyağ, kaşar peyniri, sosis, rus salatası, kırmızı lahana, meksika biberi, mısır, chili sos"
+      },
+      {
+        "name": "KITIR TAVUKLU KUMPİR",
+        "price": "₺315",
+        "description": "Tereyağ, kaşar peyniri, rus salatası, mısır, turşu, zeytin, kıtır tavuk"
+      },
+      {
+        "name": "FÜME KABURGALI KUMPİR",
+        "price": "₺360",
+        "description": "Tereyağ, kaşar peyniri, rus salatası, turşu mısır, füme kaburga"
+      },
+      {
+        "name": "SADE KUMPİR",
+        "price": "₺225",
+        "description": "Tereyağ, kaşar peyniri "
+      },
+      {
+        "name": "KARIŞIK KUMPİR",
+        "price": "₺260",
+        "description": "Tereyağ, kaşar peyniri, sosis, rus salatası, turşu, siyah zeytin, yeşil zeytin , mısır"
+      },
+      {
+        "name": "TON BALIKLI KUMPİR",
+        "price": "₺340",
+        "description": "Tereyağ, kaşar peyniri, rus salatası, turşu, mısır, ton balığı"
+      },
+      {
+        "name": "MEXICAN KUMPİR",
+        "price": "₺315",
+        "description": "Tereyağ, kaşar peyniri, rus salatası, meksika biberi, mısır, kıyma, doritos cips"
       }
     ]
   },"SANDAVİÇLER": {
-    "Sandaviçte Ennler" : [
+    "Ennler" : [
       {
         "name" : "KITIR TAVUKLU SANDAVİÇ",
         "price" : "₺240",
-        "description" : "baget ekmeğinde kıtır tavuk parçaları, iceberg ve özel kıtır sos"
+        "description" : "Baget ekmeğinde kıtır tavuk parçaları, iceberg ve özel kıtır sos"
+      },
+      {
+        "name" : "BARBEKÜ TAVUKLU SANDVİÇ",
+        "price" : "₺240",
+        "description" : "Baget ekmeğinde barbekü soslu tavuk parçaları"
+      },
+      {
+        "name" : "KÖFTELİ SANDVİÇ",
+        "price" : "₺290",
+        "description" : "Baget ekmeğinde ızgara köfte, iceberg, domates, turşu"
+      },
+      {
+        "name" : "BAZLAMADA TAVUK",
+        "price" : "₺260",
+        "description" : "Bazlama arasında sotelenmiş tavuk, soğan, kızmızı biber, yeşil biber, mantar, eritilmiş cheddar peyniri, kızarmış patates"
+      },         
+    ]
+  },"WRAPLER": {
+    "Ennler" : [
+      {
+        "name" : "TAVUKLU WRAP",
+        "price" : "₺250",
+        "description" : "Özel tortilla ekmeğine sarılı sotelenmiş tavuk, soğan, kırmızı biber, yeşil biber, mantar, eritilmiş cheddar peyniri, kızrmış patates"
+      },  
+      {
+        "name" : "STEAK WRAP",
+        "price" : "₺340",
+        "description" : "Özel tortilla ekmeğine sarılı sotelenmiş biftek soğan, kırmızı biber, yeşil biber, mantar, eritilmiş cheddar peyniri, kızrmış patates"
+      },  
+      {
+        "name" : "KÖFTE WRAP",
+        "price" : "₺320",
+        "description" : "Özel tortilla ekmeğine sarılı ızagra köfte, soğan, kırmızı biber, yeşil biber, mantar, eritilmiş cheddar peyniri, kızrmış patates"
+      }    
+    ]
+  },"MAKARNALAR": {
+    "Ennler" : [
+      {
+        "name" : " PESTO SOSLU MAKARNA",
+        "price" : "₺220",
+        "description" : ""
+      },
+      {
+        "name" : "FETTUCCINE ALFREDO",
+        "price" : "₺320",
+        "description" : ""
+      },
+      {
+        "name" : "SPAGETTI BOLONEZ",
+        "price" : "₺260",
+        "description" : ""
+      },
+      {
+        "name" : "SPAGETTI NAPOLITAN",
+        "price" : "₺220",
+        "description" : ""
+      },
+      {
+        "name" : "PENNE ARABIATA",
+        "price" : "₺240",
+        "description" : ""
+      } 
+    ]
+  },"APARATİFLER": {
+    "Ennler" : [
+      {
+        "name" : "PATATES KIZARTMASI",
+        "price" : "₺80",
+        "description" : ""
+      },
+      {
+        "name" : " 10’LU SOĞAN HALKASI",
+        "price" : "₺80",
+        "description" : ""
+      },
+      {
+        "name" : "PİLİÇ SEPETİ",
+        "price" : "₺210",
+        "description" : ""
+      },
+      {
+        "name" : " MOZERELLA STICK",
+        "price" : "₺120",
+        "description" : ""
+      },
+      {
+        "name" : "PATATES KROKET",
+        "price" : "₺100",
+        "description" : ""
+      }
+    ]
+  },"SALATALAR": {
+    "Ennler" : [
+      {
+        "name" : "AKDENİZ SALATA",
+        "price" : "₺200",
+        "description" : "Iceberg, domates, salatalık, havuç, beyaz peynir, mısır, turşu, zeytinyağı ve limon suyu"
+      },
+      {
+        "name" : "TON BALIKLI SALATA",
+        "price" : "₺250",
+        "description" : "Iceberg, ton balığı, kırmızı soğan, domates, salatalık, siyah zeytin, mısır, turşu, zeytinyağı ve limon suyu"
+      },
+      {
+        "name" : "KITIR TAVUKLU SALATA",
+        "price" : "₺250",
+        "description" : "Iceberg, kıtır tavuk parçaları, domates, mısır ve özel kıtır +sos"
+      },
+      {
+        "name" : "BADEMLİ TAVUKLU SALATA",
+        "price" : "₺280",
+        "description" : "Iceberg, ızgara tavuk parçaları, domates, mısır, havuç, kavrulmuş badem ve özel +sos"
+      }
+    ]
+  },"TATLILAR" :{
+    "Ennler":[
+      {
+        "name" : "ÇİKOLATALI CHEESECAKE",
+        "price" : "₺150",
+        "description" : ""
+      },
+      {
+        "name" : "FRAMBUAZLI CHEESECAKE",
+        "price" : "₺150",
+        "description" : ""
+      },
+      {
+        "name" : "SUFFLE",
+        "price" : "₺150",
+        "description" : ""
+      }
+    ]
+  },"İÇECEKLER" : {
+    "Ennler":[
+      {
+        "name" : "PEPSİ  330ml",
+        "price" : "₺40",
+        "description" : ""
+      },
+      {
+        "name" : "PEPSİ MAX",
+        "price" : "₺40",
+        "description" : ""
+      },
+      {
+        "name" : "SEVEN UP ",
+        "price" : "₺40",
+        "description" : ""
+      },
+      {
+        "name" : "LİPTON İCE TEA ",
+        "price" : "₺40",
+        "description" : ""
+      },
+      {
+        "name" : "SU",
+        "price" : "₺20",
+        "description" : ""
+      },
+      {
+        "name" : "AYRAN",
+        "price" : "₺40",
+        "description" : ""
       }
     ]
   }
@@ -456,6 +863,36 @@ for (let category in menuData) {
         itemDiv.appendChild(sosBtn);
         itemDiv.appendChild(sosContent);
       }
+      if (item.doubleMeatPrice) {
+        const doubleMeatBtn = document.createElement('button');
+        doubleMeatBtn.className = 'sos-btn';
+        doubleMeatBtn.textContent = 'Çift köfte';
+
+
+        const priceSpan = document.createElement('span');
+        priceSpan.textContent = `₺${item.price}`;
+        itemName.innerHTML = `${item.name} `;
+        itemName.appendChild(priceSpan);
+
+  
+        const originalDesc = item.description;
+        const doubleDesc = originalDesc.replace(/130 ?gr/, "260 gr");
+
+       let isDouble = false;
+       const basePrice = parseInt(item.price.toString().replace('₺',''));
+       const extraPrice = item.doubleMeatPrice;
+
+      doubleMeatBtn.onclick = () => {
+      isDouble = !isDouble;
+      const newPrice = isDouble ? basePrice + extraPrice : basePrice;
+      priceSpan.textContent = `₺${newPrice}`;
+      itemDesc.textContent = isDouble ? doubleDesc : originalDesc;
+      doubleMeatBtn.textContent = isDouble ? 'Tek köfteye dön' : 'Çift köfte';
+  };
+
+  itemDiv.appendChild(doubleMeatBtn);
+  }
+
 
       subItemsContainer.appendChild(itemDiv);
     });
