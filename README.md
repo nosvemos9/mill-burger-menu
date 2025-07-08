@@ -12,3 +12,6 @@ A QR-accessible, mobile-first digital menu system for burger restaurants.
 ## 🧪 Use Case
 Designed to be accessed via QR code in restaurants, allowing customers to quickly and easily view the full menu on their smartphones. Prioritizes fast loading and mobile usability.
 
+## 📷 Preview
+🔗 Page link (https://nosvemos9.github.io/mill-burger-menu/)
+
